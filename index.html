@@ -59,21 +59,16 @@
 
         .cover {
             position: relative;
-            height: 270px;
-            margin: calc(-28px - env(safe-area-inset-top)) -18px 0;
-            border-radius: 0 0 36px 36px;
+            width: 240px;
+            height: 240px;
+            margin: 0 auto;
+            border-radius: 30px;
             overflow: hidden;
             background: #e9e1d7;
+            box-shadow: 0 0 0 6px rgba(255, 255, 255, .7), 0 24px 40px -22px rgba(29, 26, 24, .45);
         }
 
-        .cover img { width: 100%; height: 100%; object-fit: cover; object-position: center 22%; display: block; }
-
-        .cover::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(245, 239, 233, 0) 0%, rgba(245, 239, 233, 0) 38%, rgba(245, 239, 233, .92) 80%, #f5efe9 100%);
-        }
+        .cover img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
 
         .name {
             font-family: 'Cormorant Garamond', serif;
@@ -88,10 +83,10 @@
             position: relative;
             z-index: 2;
             display: block;
-            width: 200px;
-            max-width: 72%;
+            width: 170px;
+            max-width: 60%;
             height: auto;
-            margin: -36px auto 0;
+            margin: 12px auto 0;
             filter: drop-shadow(0 6px 18px rgba(176, 138, 87, .3));
         }
 
@@ -465,6 +460,36 @@
                     fotos: ["corselet-1.jpg"],
                     mensagem: "Oi! Vi o Corselet Lumière no link da Use Nyce Modas e quero saber mais. Tem disponibilidade?",
                 },
+                {
+                    nome: "Vestido Caramelo",
+                    sub: "",
+                    fotos: ["vestido-caramelo-1.jpg"],
+                    mensagem: "Oi! Vi o Vestido Caramelo no link da Use Nyce Modas e quero saber mais. Tem disponibilidade?",
+                },
+                {
+                    nome: "Vestido Laranja",
+                    sub: "",
+                    fotos: ["vestido-laranja-1.jpg", "vestido-laranja-2.jpg"],
+                    mensagem: "Oi! Vi o Vestido Laranja no link da Use Nyce Modas e quero saber mais. Tem disponibilidade?",
+                },
+                {
+                    nome: "Top Halter Azul",
+                    sub: "",
+                    fotos: ["top-azul-1.jpg"],
+                    mensagem: "Oi! Vi o Top Halter Azul no link da Use Nyce Modas e quero saber mais. Tem disponibilidade?",
+                },
+                {
+                    nome: "Top Halter Vermelho",
+                    sub: "",
+                    fotos: ["top-vermelho-1.jpg"],
+                    mensagem: "Oi! Vi o Top Halter Vermelho no link da Use Nyce Modas e quero saber mais. Tem disponibilidade?",
+                },
+                {
+                    nome: "Top Halter Preto",
+                    sub: "",
+                    fotos: ["top-preto-1.jpg"],
+                    mensagem: "Oi! Vi o Top Halter Preto no link da Use Nyce Modas e quero saber mais. Tem disponibilidade?",
+                },
             ],
             // Prints de feedback (nomes dos arquivos na pasta). Vazio = seção some.
             feedbacks: [],
@@ -515,8 +540,6 @@
         <img src="${esc(s.foto)}" alt="${esc(s.nome)}" loading="lazy" onerror="this.remove()">
         <div class="shade"></div>
         <div class="info">
-          ${s.sub ? `<div class="sub">${esc(s.sub)}</div>` : ""}
-          <h3>${esc(s.nome)}</h3>
           <a class="pbtn" href="${wa(s.mensagem)}" target="_blank" rel="noopener">${ICON.wa}<span>Quero esta peça</span></a>
         </div>
       </article>`).join("");
