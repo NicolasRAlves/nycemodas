@@ -57,18 +57,23 @@
         /* ---------- topo ---------- */
         .hero { text-align: center; }
 
-        .avatar {
-            width: 156px;
-            height: 192px;
-            margin: 0 auto;
-            border-radius: 96px 96px 24px 24px;
+        .cover {
+            position: relative;
+            height: 440px;
+            margin: calc(-28px - env(safe-area-inset-top)) -18px 0;
+            border-radius: 0 0 36px 36px;
             overflow: hidden;
-            border: 1px solid var(--gold-soft);
-            box-shadow: 0 0 0 6px rgba(255, 255, 255, .7), 0 24px 40px -22px rgba(29, 26, 24, .45);
             background: #e9e1d7;
         }
 
-        .avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
+        .cover img { width: 100%; height: 100%; object-fit: cover; object-position: center 22%; display: block; }
+
+        .cover::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(245, 239, 233, 0) 0%, rgba(245, 239, 233, 0) 38%, rgba(245, 239, 233, .92) 80%, #f5efe9 100%);
+        }
 
         .name {
             font-family: 'Cormorant Garamond', serif;
@@ -80,12 +85,14 @@
         }
 
         .logo-brand {
+            position: relative;
+            z-index: 2;
             display: block;
-            width: 210px;
-            max-width: 70%;
+            width: 230px;
+            max-width: 72%;
             height: auto;
-            margin: 22px auto 0;
-            filter: drop-shadow(0 4px 12px rgba(176, 138, 87, .25));
+            margin: -36px auto 0;
+            filter: drop-shadow(0 6px 18px rgba(176, 138, 87, .3));
         }
 
         .tag {
@@ -114,23 +121,70 @@
 
         /* ---------- botões ---------- */
         .cta {
+            position: relative;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            height: 58px;
-            margin-top: 24px;
-            border-radius: 18px;
-            background: var(--ink);
-            color: #fff;
-            font-weight: 600;
-            font-size: 15px;
+            gap: 12px;
+            height: 62px;
+            margin-top: 22px;
+            padding: 0 22px 0 8px;
+            border-radius: 999px;
+            background: linear-gradient(120deg, #e8c99a 0%, #b08a57 48%, #8a6538 100%);
+            color: var(--ink);
+            font-weight: 700;
+            font-size: 15.5px;
             letter-spacing: .02em;
-            box-shadow: 0 18px 30px -16px rgba(29, 26, 24, .6);
-            transition: transform .25s, background .25s;
+            box-shadow: 0 16px 34px -12px rgba(138, 101, 56, .75), inset 0 1px 0 rgba(255, 255, 255, .45);
+            transition: transform .25s, box-shadow .25s;
         }
 
-        .cta:hover { background: #2c2724; }
+        .cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 20px 40px -12px rgba(138, 101, 56, .85), inset 0 1px 0 rgba(255, 255, 255, .45);
+        }
+
+        .cta::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, .45) 50%, transparent 65%);
+            transform: translateX(-120%);
+            animation: sheen 4.5s ease-in-out 1.5s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes sheen {
+            0%, 35%, 100% { transform: translateX(-120%); }
+            60% { transform: translateX(120%); }
+        }
+
+        .cta-ico {
+            position: relative;
+            flex: none;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: var(--ink);
+            color: #e8c99a;
+        }
+
+        .cta-ico::before {
+            content: "";
+            position: absolute;
+            inset: -5px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(29, 26, 24, .35);
+            animation: ring 2.4s ease-out infinite;
+        }
+
+        @keyframes ring {
+            0% { transform: scale(.9); opacity: .9; }
+            100% { transform: scale(1.4); opacity: 0; }
+        }
 
         .duo { display: grid; gap: 10px; margin-top: 10px; }
 
@@ -138,15 +192,19 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
-            height: 52px;
-            border-radius: 18px;
+            gap: 8px;
+            height: 54px;
+            border-radius: 999px;
             border: 1px solid var(--line);
-            background: var(--paper);
-            font-weight: 500;
+            background: rgba(255, 253, 251, .72);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: var(--ink);
+            font-weight: 600;
             font-size: 13.5px;
-            padding: 0 6px;
+            padding: 0 8px;
             white-space: nowrap;
+            box-shadow: 0 10px 22px -18px rgba(29, 26, 24, .5);
             transition: transform .25s, background .25s;
         }
 
@@ -330,12 +388,10 @@
 <body>
     <main>
         <section class="hero">
-            <div class="avatar reveal" style="animation-delay:.08s">
+            <div class="cover reveal" style="animation-delay:.08s">
                 <img id="foto" alt="" onerror="this.parentNode.style.display='none'" />
             </div>
-            <h1 class="reveal" style="animation-delay:.16s">
-                <img class="logo-brand" src="logo-use-nyce.png" alt="Use Nyce Modas — Moda Feminina" />
-            </h1>
+            <img class="logo-brand reveal" src="logo-use-nyce.png" alt="Use Nyce Modas — Moda Feminina" style="animation-delay:.16s" />
             <div class="tag reveal" id="tag" style="animation-delay:.22s"></div>
             <p class="bio reveal" id="bio" style="animation-delay:.28s"></p>
 
@@ -429,7 +485,7 @@
 
         const cta = document.getElementById("cta");
         cta.href = wa(LOJA.mensagem);
-        cta.innerHTML = `${ICON.wa}<span>Chamar no WhatsApp</span>`;
+        cta.innerHTML = `<span class="cta-ico">${ICON.wa}</span><span>Chamar no WhatsApp</span>`;
 
         const btnVer = document.getElementById("btnVer");
         btnVer.innerHTML = `${ICON.down}<span>Ver produtos</span>`;
