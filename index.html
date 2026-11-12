@@ -79,7 +79,14 @@
             margin-top: 22px;
         }
 
-        .name em { font-weight: 500; font-style: italic; color: var(--gold); }
+        .logo-brand {
+            display: block;
+            width: 210px;
+            max-width: 70%;
+            height: auto;
+            margin: 22px auto 0;
+            filter: drop-shadow(0 4px 12px rgba(176, 138, 87, .25));
+        }
 
         .tag {
             margin-top: 12px;
@@ -326,7 +333,9 @@
             <div class="avatar reveal" style="animation-delay:.08s">
                 <img id="foto" alt="" onerror="this.parentNode.style.display='none'" />
             </div>
-            <h1 class="name reveal" id="nome" style="animation-delay:.16s"></h1>
+            <h1 class="reveal" style="animation-delay:.16s">
+                <img class="logo-brand" src="logo-use-nyce.png" alt="Use Nyce Modas — Moda Feminina" />
+            </h1>
             <div class="tag reveal" id="tag" style="animation-delay:.22s"></div>
             <p class="bio reveal" id="bio" style="animation-delay:.28s"></p>
 
@@ -370,7 +379,7 @@
             tag: "Slim ao plus size",
             bio: "Para mulheres que não passam despercebidas.",
             foto: "capa-nyce.jpg",
-            instagram: "nyce.stintino",               // @ da loja (sem o @)
+            instagram: "usenyce_modas",               // @ da loja (sem o @)
             tiktok: "",                               // @ do TikTok (sem o @). Vazio = botão não aparece
             whatsapp: "5511982182633",                // DDI + DDD + número, só dígitos
             mensagem: "Oi! Vim pelo link da Use Nyce Modas e gostaria de tirar umas dúvidas.",
@@ -414,8 +423,6 @@
 
         // Topo
         document.title = `${LOJA.nome} • Links`;
-        const [primeira, ...resto] = LOJA.nome.split(" ");
-        document.getElementById("nome").innerHTML = `${esc(primeira)} <em>${esc(resto.join(" "))}</em>`;
         const foto = document.getElementById("foto"); foto.alt = LOJA.nome; foto.src = LOJA.foto;
         document.getElementById("tag").innerHTML = `<i></i><span>${esc(LOJA.tag)}</span><i></i>`;
         document.getElementById("bio").textContent = LOJA.bio;
