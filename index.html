@@ -59,7 +59,7 @@
 
         .cover {
             position: relative;
-            height: 440px;
+            height: 270px;
             margin: calc(-28px - env(safe-area-inset-top)) -18px 0;
             border-radius: 0 0 36px 36px;
             overflow: hidden;
@@ -88,7 +88,7 @@
             position: relative;
             z-index: 2;
             display: block;
-            width: 230px;
+            width: 200px;
             max-width: 72%;
             height: auto;
             margin: -36px auto 0;
@@ -126,24 +126,25 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            height: 62px;
-            margin-top: 22px;
-            padding: 0 22px 0 8px;
-            border-radius: 999px;
-            background: linear-gradient(120deg, #e8c99a 0%, #b08a57 48%, #8a6538 100%);
-            color: var(--ink);
-            font-weight: 700;
-            font-size: 15.5px;
-            letter-spacing: .02em;
-            box-shadow: 0 16px 34px -12px rgba(138, 101, 56, .75), inset 0 1px 0 rgba(255, 255, 255, .45);
+            gap: 14px;
+            height: 70px;
+            margin-top: 18px;
+            padding: 0 24px 0 10px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, #3ee17f 0%, #25d366 45%, #109c4a 100%);
+            color: #fff;
+            box-shadow: 0 18px 36px -14px rgba(16, 156, 74, .75), inset 0 1px 0 rgba(255, 255, 255, .35);
             transition: transform .25s, box-shadow .25s;
         }
 
         .cta:hover {
             transform: translateY(-1px);
-            box-shadow: 0 20px 40px -12px rgba(138, 101, 56, .85), inset 0 1px 0 rgba(255, 255, 255, .45);
+            box-shadow: 0 22px 42px -14px rgba(16, 156, 74, .85), inset 0 1px 0 rgba(255, 255, 255, .35);
         }
+
+        .cta-txt { display: flex; flex-direction: column; gap: 3px; text-align: left; line-height: 1.1; }
+        .cta-txt b { font-size: 17px; font-weight: 700; letter-spacing: .01em; }
+        .cta-txt small { font-size: 12px; font-weight: 500; opacity: .92; }
 
         .cta::after {
             content: "";
@@ -163,21 +164,24 @@
         .cta-ico {
             position: relative;
             flex: none;
-            width: 46px;
-            height: 46px;
-            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            border-radius: 18px;
             display: grid;
             place-items: center;
-            background: var(--ink);
-            color: #e8c99a;
+            background: #fff;
+            color: #109c4a;
+            box-shadow: 0 6px 14px -6px rgba(0, 0, 0, .35);
         }
+
+        .cta .cta-ico svg { width: 26px; height: 26px; }
 
         .cta-ico::before {
             content: "";
             position: absolute;
             inset: -5px;
-            border-radius: 50%;
-            border: 1.5px solid rgba(29, 26, 24, .35);
+            border-radius: 22px;
+            border: 2px solid rgba(255, 255, 255, .7);
             animation: ring 2.4s ease-out infinite;
         }
 
@@ -485,7 +489,7 @@
 
         const cta = document.getElementById("cta");
         cta.href = wa(LOJA.mensagem);
-        cta.innerHTML = `<span class="cta-ico">${ICON.wa}</span><span>Chamar no WhatsApp</span>`;
+        cta.innerHTML = `<span class="cta-ico">${ICON.wa}</span><span class="cta-txt"><b>Chamar no WhatsApp</b><small>Dúvidas, tamanhos e pedidos</small></span>`;
 
         const btnVer = document.getElementById("btnVer");
         btnVer.innerHTML = `${ICON.down}<span>Ver produtos</span>`;
