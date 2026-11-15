@@ -395,8 +395,7 @@
             <div class="cover reveal" style="animation-delay:.08s">
                 <img id="foto" alt="" onerror="this.parentNode.style.display='none'" />
             </div>
-            <img class="logo-brand reveal" src="logo-use-nyce.png" alt="Use Nyce Modas — Moda Feminina" style="animation-delay:.16s" />
-            <div class="tag reveal" id="tag" style="animation-delay:.22s"></div>
+            <img class="logo-brand reveal" src="logo-use-nyce-natal.png" alt="Use Nyce Modas — Moda Feminina" style="animation-delay:.16s" />
             <p class="bio reveal" id="bio" style="animation-delay:.28s"></p>
 
             <a class="cta reveal" id="cta" target="_blank" rel="noopener" style="animation-delay:.36s"></a>
@@ -514,7 +513,6 @@
         // Topo
         document.title = `${LOJA.nome} • Links`;
         const foto = document.getElementById("foto"); foto.alt = LOJA.nome; foto.src = LOJA.foto;
-        document.getElementById("tag").innerHTML = `<i></i><span>${esc(LOJA.tag)}</span><i></i>`;
         document.getElementById("bio").textContent = LOJA.bio;
 
         const cta = document.getElementById("cta");
